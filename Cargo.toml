@@ -1,0 +1,18 @@
+[package]
+name = "otpee"
+version = "0.1.0"
+edition = "2021"
+authors = ["Lucy <lucy@absolucy.moe>"]
+license = "MIT or Apache-2.0"
+
+[dependencies]
+digest = "0.10.3"
+hmac = { version = "0.12.1", features = ["reset"] }
+
+[features]
+default = ["std"]
+std = ["digest/std", "hmac/std"]
+
+[dev-dependencies]
+hex-literal = "0.3.4"
+sha1 = "0.10.1"
