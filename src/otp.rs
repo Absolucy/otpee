@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT OR Apache-2.0
 use alloc::fmt::{self, Display, Formatter};
+use constant_time_eq::constant_time_eq;
 use core::{cmp::PartialEq, convert::AsRef, ops::Deref};
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
@@ -37,7 +38,7 @@ impl AsRef<u32> for Otp {
 impl PartialEq<u32> for Otp {
 	#[inline]
 	fn eq(&self, other: &u32) -> bool {
-		self.code == *other
+		constant_time_eq(&self.to_ne_bytes(), &other.to_ne_bytes())
 	}
 }
 

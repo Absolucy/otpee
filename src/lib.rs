@@ -8,3 +8,7 @@ pub mod error;
 pub mod hotp;
 pub mod otp;
 pub mod totp;
+
+pub use hotp::Hotp;
+pub use otp::Otp;
+pub use totp::Totp;
